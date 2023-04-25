@@ -18,14 +18,22 @@ impl<E: Error + 'static> Error for LocatedError<E> {
 
 impl<E: Error + 'static> std::fmt::Display for LocatedError<E> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}, {}:{}:{}", self.inner, self.file, self.line, self.column)
+        write!(
+            f,
+            "{}, {}:{}:{}",
+            self.inner, self.file, self.line, self.column
+        )
     }
 }
 
 // The core idea: convenience macro to create the structure
 macro_rules! loc {
     () => {
-        |e| LocatedError { inner: e, file: file!(), line: line!(), column: column!() }
-    }
+        |e| LocatedError {
+            inner: e,
+            file: file!(),
+            line: line!(),
+            column: column!(),
+        }
+    };
 }
-

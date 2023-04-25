@@ -2,15 +2,15 @@ use std::fs::File;
 use std::io::Write;
 use std::path::Path;
 
-use clap::{Parser};
 use clap::builder::TypedValueParser as _;
+use clap::Parser;
 use silk_rs::decode_silk;
 
 mod wav;
 use wav::{WavHeader, WavResult};
 
 mod error;
-use error::{LocatedError};
+use error::LocatedError;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None, arg_required_else_help(true))]

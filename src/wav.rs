@@ -6,7 +6,7 @@ pub struct WavHeader {
     chunk_id: [u8; 4],
     chunk_size: u32,
     format: [u8; 4],
-    sub_chunk1_id: [u8;4],
+    sub_chunk1_id: [u8; 4],
     sub_chunk1_size: u32,
     audio_format: u16,
     channels: u16,
@@ -14,7 +14,7 @@ pub struct WavHeader {
     byte_rate: u32,
     block_align: u16,
     bits_per_sample: u16,
-    sub_chunk2_id: [u8;4],
+    sub_chunk2_id: [u8; 4],
     sub_chunk2_size: u32,
 }
 
@@ -39,7 +39,7 @@ impl Default for WavHeader {
 }
 
 impl WavHeader {
-    pub fn new(channels:u16, sample_rate:u32, data_size: u32) -> Self {
+    pub fn new(channels: u16, sample_rate: u32, data_size: u32) -> Self {
         WavHeader {
             channels,
             chunk_size: data_size + 36,
